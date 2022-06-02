@@ -1,24 +1,39 @@
 <resources>
     <string name="app_name">VirGL Overlay</string>
     <string name="socket_path_text">Socket path (/tmp/.virgl_test):</string>
-    <string name="protocol_version_text">Use vtest protocol version 2 (new Mesa libGL needed)</string>
+    <string name="protocol_version_text">VTEST Protocol V2</string>
     <string name="start_text">Start services</string>
     <string name="clean_text">Clean services</string>
     <string name="restart_services_text">Auto restart services</string>
-    <string name="use_gles_text">Use GL ES 3.x instead of OpenGL</string>
-    <string name="use_threads_text">Use multi-thread egl access</string>
-    <string name="overlay_centered_text">Set overlay centered instead of top-left</string>
-    <string name="dxtn_decompress_text">DXTn (S3TC) decompress</string>
-    <string name="information1">Original APK with native library by mittorn</string>
-    <string name="information2">https://github.com/mittorn/virglrenderer-android</string>
-    <string name="information3">https://github.com/mittorn/virglrenderer</string>
-    <string name="information4">Rebuild APK v.0.0.8 (mod debug) by alexvorxx</string>
-    <string name="information5">The following code was used in this version:</string>
-    <string name="information6">virglrenderer-master (22.04.22)</string>
-    <string name="information7">https://github.com/freedesktop/virglrenderer</string>
-    <string name="information8">libepoxy-1.5.10</string>
-    <string name="information9">https://github.com/anholt/libepoxy</string>
-    <string name="information10">gl4es-1.1.4</string>
-    <string name="information11">https://github.com/ptitSeb/gl4es</string>
-    <string name="information12">Special thanks to mittorn for help and advices</string>
+    <string name="no_overlay_text">Disable Resize Overlay*</string>
+    <string name="use_gles_text">GLES 3.x</string>
+    <string name="use_threads_text">Multi-Thread EGL Access</string>
+    <string name="overlay_centered_text">Center Overlay</string>
+    <string name="dxtn_decompress_text">DXTn (S3TC) Decompress</string>
+    <string name="information1">
+       \n Rebuild APK v.0.0.8 (mod debug) by alexvorxx
+        \n Original APK with native library by mittorn
+        \n https://github.com/mittorn/virglrenderer-android
+        \n https://github.com/mittorn/virglrenderer
+        \n
+        \n The following code was used in this version:
+        \n
+        \n virglrenderer-master (22.04.22):
+        \n https://github.com/freedesktop/virglrenderer
+        \n libepoxy-1.5.10:
+        \n https://github.com/anholt/libepoxy
+        \n gl4es-1.1.4:
+        \n https://github.com/ptitSeb/gl4es </string>
+
+    <string name="information2">\n
+        .Help
+        \n\n - VTEST Protocol V2: With this on you can use VTEST_WIN=1 in exagear desktop shortcut env so you can render game directly in exagear window allowing fullscreen at lower resolutions.
+        \n\n - GLES 3.x: It will use Android optimized version of opengl instead of opengl.
+        \n\n - Multi-Thread EGL Access: Enables Multi thread, Multi-threaded rendering is best suited to applications that are CPU limited when compiling shaders or uploading data to the graphics driver. Multi-threaded rendering (when done sensibly) enables better distribution of driver work and allows applications to maintain consistent frame rates. (if your phone cores are capable of)
+        \n\n - Center Overlay - With this option active overlay will be created at the center of the screen instead of top-left.
+        \n\n - Disable Resize Overlay: This option will fixate the overlay size to fix the black rectangle bug that occur in some games. *VTEST_WIN=1 is necessary.
+        \n\n - DXTn (S3TC) decompress: Some games compresses their textures with this algorithm, without this option game textures will be glitched (Example South Park: TOST).
+        \n\n---------------------------</string>
+
+    <string name="information3"> Special thanks to mittorn for help and advices\n\n\n</string>
 </resources>

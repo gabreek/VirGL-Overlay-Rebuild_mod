@@ -36,7 +36,7 @@ public class overlay {
 	private static Context ctx;
     private static WindowManager wm;
 
-	public static int centered = 0, restart_var = 0, protocol_type = 0;
+	public static int centered = 0, restart_var = 0, protocol_type = 0, no_overlay_var = 0;
 
     final static Handler hh = new Handler();
 
@@ -168,6 +168,7 @@ public class overlay {
 			centered = Integer.valueOf(parts0[0]);
 			restart_var = Integer.valueOf(parts0[1]);
 			protocol_type = Integer.valueOf(parts0[2]);
+			no_overlay_var = Integer.valueOf(parts0[4]);
 			reader.close();
 			settings_reader.close();
 
@@ -201,7 +202,7 @@ public class overlay {
 		final SurfaceView surf[] = new SurfaceView[1];
 		try
 		{
-			int LAYOUT_FLAG;
+			final int LAYOUT_FLAG;
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 				LAYOUT_FLAG = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
 			} else {
@@ -225,11 +226,14 @@ public class overlay {
 					params.gravity = Gravity.LEFT | Gravity.TOP;
 				}
 				//
-
 				params.x = x;
 				params.y = y;
-				params.width = width;
-				params.height = height;
+				if(no_overlay_var != 0) {
+					params.width = 32;
+					params.height = 32;
+				} else{
+					params.width = width;
+					params.height = height;}
 				if( (width == 0) || (height == 0) )
 				{
 					params.width = params.height = 32;
@@ -279,8 +283,8 @@ public class overlay {
 					{
 						params.x = x;
 						params.y = y;
-						params.width = width;
-						params.height = height;
+						params.width = 32;
+						params.height = 32;
 					}
 					else
 					{

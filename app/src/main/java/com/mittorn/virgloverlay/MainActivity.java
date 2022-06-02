@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     //#define FL_OVERLAY (1<<3)
     public static final int FL_MULTITHREAD = (1<<4);
 
-    public int centered = 0, restart_var = 0, protocol_version = 0;
+    public int centered = 0, restart_var = 0, protocol_version = 0, no_overlay_var = 0;
     public int dxtn_decompress = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
 
         CheckBox overlay_centered = (CheckBox)findViewById(R.id.overlay_centered);
         CheckBox restart_box = (CheckBox)findViewById(R.id.restart);
+        CheckBox no_overlay_box = (CheckBox)findViewById(R.id.no_overlay);
         CheckBox protocol_version_box = (CheckBox)findViewById(R.id.protocol_version);
 
         CheckBox dxtn_decompress_box = (CheckBox)findViewById(R.id.dxtn_decompress);
@@ -72,6 +73,7 @@ public class MainActivity extends Activity {
             restart_var = Integer.parseInt(parts1[1]);
             protocol_version = Integer.parseInt(parts1[2]);
             dxtn_decompress = Integer.parseInt(parts1[3]);
+            no_overlay_var = Integer.parseInt(parts1[4]);
             reader1.close();
             settings_reader1.close();
         }catch(Exception e){}
@@ -81,6 +83,7 @@ public class MainActivity extends Activity {
 
         overlay_centered.setChecked(centered != 0);
         restart_box.setChecked(restart_var != 0);
+        no_overlay_box.setChecked(no_overlay_var != 0);
         protocol_version_box.setChecked(protocol_version != 0);
 
         dxtn_decompress_box.setChecked(dxtn_decompress != 0);
@@ -120,6 +123,7 @@ public class MainActivity extends Activity {
 
         CheckBox overlay_centered = (CheckBox)findViewById(R.id.overlay_centered);
         CheckBox restart_box = (CheckBox)findViewById(R.id.restart);
+        CheckBox no_overlay_box = (CheckBox)findViewById(R.id.no_overlay);
         CheckBox protocol_version_box = (CheckBox)findViewById(R.id.protocol_version);
 
         CheckBox dxtn_decompress_box = (CheckBox)findViewById(R.id.dxtn_decompress);
@@ -136,17 +140,21 @@ public class MainActivity extends Activity {
             }else{
                 restart_var = 0;
             }
-
-            if (protocol_version_box.isChecked()){
-                protocol_version = 1;
+            if (no_overlay_box.isChecked()){
+                no_overlay_var = 1;
             }else{
-                protocol_version = 0;
+                no_overlay_var = 0;
             }
 
             if (dxtn_decompress_box.isChecked()){
                 dxtn_decompress = 1;
             }else{
                 dxtn_decompress = 0;
+            }
+            if (protocol_version_box.isChecked()){
+                protocol_version = 1;
+            }else{
+                protocol_version = 0;
             }
 
             FileWriter writer1 = new FileWriter(getFilesDir().getPath()+"/settings2");
@@ -157,6 +165,8 @@ public class MainActivity extends Activity {
             writer1.write(String.valueOf(protocol_version));
             writer1.write(' ');
             writer1.write(String.valueOf(dxtn_decompress));
+            writer1.write(' ');
+            writer1.write(String.valueOf(no_overlay_var));
             writer1.close();
 
             int flags = 0;

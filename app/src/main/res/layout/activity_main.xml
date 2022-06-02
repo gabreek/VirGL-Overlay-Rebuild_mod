@@ -7,228 +7,159 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:text="@string/app_name"
+            android:textColor="#4CAF50"
+            android:textSize="24sp"
+            tools:ignore="MissingConstraints" />
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="@string/socket_path_text"
+                    android:textColor="#3F51B5"
+                    tools:ignore="MissingConstraints" />
+
+                <EditText
+                    android:id="@+id/socket_path"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints" />
+            </TableRow>
+
+        </TableLayout>
+
+        <CheckBox
+            android:id="@+id/protocol_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/protocol_version_text" />
+
+        <CheckBox
+            android:id="@+id/use_gles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_gles_text" />
+
+        <CheckBox
+            android:id="@+id/use_threads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_threads_text" />
+
+        <CheckBox
+            android:id="@+id/overlay_centered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/overlay_centered_text" />
+
+        <CheckBox
+            android:id="@+id/dxtn_decompress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dxtn_decompress_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/restart"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:text="@string/restart_services_text" />
+
+            <CheckBox
+                android:id="@+id/no_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_overlay_text" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/clean_button"
+                android:layout_width="368dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:paddingBottom="5dp"
-                android:text="@string/app_name"
-                android:textColor="#4CAF50"
-                android:textSize="24sp"
-                tools:ignore="MissingConstraints" />
+                android:layout_weight="0.5"
+                android:onClick="onClickClean"
+                android:text="@string/clean_text" />
 
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:text="@string/socket_path_text"
-                        android:textColor="#3F51B5"
-                        tools:ignore="MissingConstraints" />
-
-                    <EditText
-                        android:id="@+id/socket_path"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:ignore="MissingConstraints" />
-                </TableRow>
-
-            </TableLayout>
-
-            <CheckBox
-                android:id="@+id/protocol_version"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="385dp"
                 android:layout_height="wrap_content"
-                android:text="@string/protocol_version_text" />
-
-            <CheckBox
-                android:id="@+id/use_gles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/use_gles_text" />
-
-            <CheckBox
-                android:id="@+id/use_threads"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/use_threads_text" />
-
-            <CheckBox
-                android:id="@+id/overlay_centered"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/overlay_centered_text" />
-
-            <CheckBox
-                android:id="@+id/dxtn_decompress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/dxtn_decompress_text" />
-
-            <CheckBox
-                android:id="@+id/restart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/restart_services_text" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/clean_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:onClick="onClickClean"
-                    android:text="@string/clean_text" />
-
-                <Button
-                    android:id="@+id/start_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:onClick="onClickStart"
-                    android:text="@string/start_text" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10sp"
-                android:text="@string/information1"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:text="@string/information2"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:text="@string/information3"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10sp"
-                android:text="@string/information4"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/information5"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/information6"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:text="@string/information7"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/information8"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:text="@string/information9"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/information10"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:text="@string/information11"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10sp"
-                android:text="@string/information12"
-                android:textColor="#103E12"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="MissingConstraints" />
+                android:layout_weight="0.5"
+                android:onClick="onClickStart"
+                android:text="@string/start_text" />
 
         </LinearLayout>
 
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:addStatesFromChildren="false"
+            android:orientation="vertical"
+            android:touchscreenBlocksFocus="false">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:text="@string/information2"
+                android:textIsSelectable="false"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:text="@string/information1"
+                android:textIsSelectable="false"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:text="@string/information3"
+                android:textIsSelectable="false"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
